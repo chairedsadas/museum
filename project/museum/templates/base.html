@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+<body>
+
+<div class="container top">
+    <div class="row">
+        <div class="col-md-6">
+            <a>
+                <img class="img-responsive" src="{% static 'img/logo.jpg' %}">
+            </a>
+        </div>
+        <div class="col-md-3 hidden-xs">
+            <a class="phone ant">
+                <span class="glyphicon glyphicon-phone"></span>电话：400 1111 0000 &nbsp;&nbsp;
+            </a>
+        </div>
+        <div class="col-md-3 hidden-xs">
+            <a class="mail ant">
+                <span class="glyphicon glyphicon-envelope"></span>邮箱：12122121@126.com &nbsp;&nbsp;
+            </a>
+        </div>
+    </div>
+</div>
+
+<!--导航条-->
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapse" data-toggle="collapse" data-target="#bs-example"
+                    aria-expanded="false">
+                <span>导航栏</span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example">
+            <ul class="nav navbar-nav" style="width: 100%;">
+                <li class="nav-top">
+                    <a href="{% url 'home' %}">首页</a>
+                </li>
+                <li class="dropdown nav-top">
+                    <a href="#" class="dropdown-toggle on"
+                       data-toggle="dropdown">教育</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'educationAPP:culture' %}">文化</a></li>
+                        <li><a href="{% url 'educationAPP:history' %}">历史</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown nav-top">
+                    <a href="#" class="dropdown-toggle on"
+                       data-toggle="dropdown">文创</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'creativeApp:products' 'stationery' %}">文具</a></li>
+                        <li><a href="{% url 'creativeApp:products' 'accessory' %}">首饰</a></li>
+                    </ul>
+                </li>
+
+
+                <li class="dropdown nav-top">
+                    <a href="#" class="dropdown-toggle on"
+                       data-toggle="dropdown">藏品</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'collectionAPP:penmanship' %}">书法</a></li>
+                        <li><a href="{% url 'collectionAPP:Bronze_ware' %}">青铜器</a></li>
+                        <li><a href="{% url 'collectionAPP:porcelain' %}">瓷器</a></li>
+                    </ul>
+                </li>
+
+
+                <li class="dropdown nav-top">
+                    <a href="#" class="dropdown-toggle on"
+                       data-toggle="dropdown">关于</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'aboutAPP:introduce' %}">总体介绍</a></li>
+                        <li><a href="{% url 'aboutAPP:leader' %}">领导</a></li>
+                    </ul>
+                </li>
+
+
+            </ul>
+        </div>
+    </div>
+</nav>
+{% block content %}{% endblock %}
+<div class="container web-footer">
+    <!--底部索引-->
+    <div class="row" id="map-footer">
+        <div class="col-md-2">
+            <dl>
+                <dt>教育</dt>
+                <dd><a href="{% url 'educationAPP:culture' %}">文化</a></dd>
+                <dd><a href="{% url 'educationAPP:history' %}">历史</a></dd>
+            </dl>
+        </div>
+        <div class="col-md-2">
+            <dl>
+                <dt>文创</dt>
+                <dd><a href="{% url 'creativeApp:products' 'stationery' %}">文具</a></dd>
+                <dd><a href="{% url 'creativeApp:products' 'accessory' %}">首饰</a></dd>
+            </dl>
+        </div>
+        <div class="col-md-2">
+            <dl>
+                <dt>藏品</dt>
+                <dd><a href="{% url 'collectionAPP:penmanship' %}">书法</a></dd>
+                <dd><a href="{% url 'collectionAPP:Bronze_ware' %}">青铜器</a></dd>
+                <dd><a href="{% url 'collectionAPP:porcelain' %}">瓷器</a></dd>
+            </dl>
+        </div>
+        <div class="col-md-2">
+            <dl>
+                <dt>关于</dt>
+                <dd><a href="{% url 'aboutAPP:introduce' %}">总体介绍</a></dd>
+                <dd><a href="{% url 'aboutAPP:leader' %}">领导</a></dd>
+            </dl>
+        </div>
+        <div class="col-md-4" id="wx">
+            <p>扫描二维码，关注我们</p>
+            <img class="qr img" src="{% static 'img/qr.png' %}" alt="wx">
+            <p>客服热线：<b style="font-size: 20px">400-111-2222</b></p>
+        </div>
+    </div>
+    <!--版权-->
+    <div class="row" id="patent-footer">
+        <p>© 2023 Python web 企业网站 版权所有 | 鄂 ICP 备 22033313号</p>
+    </div>
+</div>
+<script>
+    $(function () {
+        $(".dropdown").mouseover(function () {
+            $(this).addClass("open");
+        });
+        $(".dropdown").mouseleave(function () {
+            $(this).removeClass("open");
+        });
+    });
+</script>
+
+</body>
+</html>
