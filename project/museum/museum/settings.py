@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'creativeApp',
     'educationApp',
     'aboutApp',
+    'widget_tweaks',
+    'simpleui',
 ]
 
 MIDDLEWARE = [
@@ -106,9 +108,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-Hans' # 设置语音为中文
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai' # 设置中国时区
 
 USE_I18N = True
 
@@ -129,3 +131,13 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'/media/')
 #王普慧-end
+
+
+
+#yyt#
+
+EMAIL_HOST = 'smtp.qq.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = '1209053533@qq.com'
+EMAIL_HOST_PASSWORD = 'qtkejxlkyarnghhh'
+EMAIL_USE_TLS = True

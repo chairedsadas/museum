@@ -1,0 +1,28 @@
+.contact-left h1 strong {
+    display: block;
+    color: #777;
+    font-size: 1.6rem;
+}
+
+.contact-left h1 span {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.contact-left ul {
+    padding: 0;
+}
+
+.contact-left li {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    color: #777;
+    margin-top: 17px;
+}
+
+.contact-left li a {
+    color: #777;
+}

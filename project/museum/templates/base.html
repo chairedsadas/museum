@@ -49,14 +49,7 @@
                 <li class="nav-top">
                     <a href="{% url 'home' %}">首页</a>
                 </li>
-                <li class="dropdown nav-top">
-                    <a href="#" class="dropdown-toggle on"
-                       data-toggle="dropdown">教育</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{% url 'educationAPP:culture' %}">文化</a></li>
-                        <li><a href="{% url 'educationAPP:history' %}">历史</a></li>
-                    </ul>
-                </li>
+                
 
                 <li class="dropdown nav-top">
                     <a href="#" class="dropdown-toggle on"
@@ -78,6 +71,14 @@
                     </ul>
                 </li>
 
+                <li class="dropdown nav-top">
+                    <a href="#" class="dropdown-toggle on"
+                       data-toggle="dropdown">招聘</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'educationAPP:culture' %}">信息咨询</a></li>
+                        <li><a href="{% url 'educationAPP:history' %}">招聘信息</a></li>
+                    </ul>
+                </li>
 
                 <li class="dropdown nav-top">
                     <a href="#" class="dropdown-toggle on"
@@ -97,13 +98,7 @@
 <div class="container web-footer">
     <!--底部索引-->
     <div class="row" id="map-footer">
-        <div class="col-md-2">
-            <dl>
-                <dt>教育</dt>
-                <dd><a href="{% url 'educationAPP:culture' %}">文化</a></dd>
-                <dd><a href="{% url 'educationAPP:history' %}">历史</a></dd>
-            </dl>
-        </div>
+        
         <div class="col-md-2">
             <dl>
                 <dt>文创</dt>
@@ -119,6 +114,15 @@
                 <dd><a href="{% url 'collectionAPP:porcelain' %}">瓷器</a></dd>
             </dl>
         </div>
+
+        <div class="col-md-2">
+            <dl>
+                <dt>招聘</dt>
+                <dd><a href="{% url 'educationAPP:culture' %}">信息咨询</a></dd>
+                <dd><a href="{% url 'educationAPP:history' %}">招聘信息</a></dd>
+            </dl>
+        </div>
+
         <div class="col-md-2">
             <dl>
                 <dt>关于</dt>

@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+{% block title %}
+人才招聘
+{% endblock %}
+{% block content %}
+<link href="{% static 'css/contact.css' %}" rel="stylesheet">
+<!-- 广告横幅-->
+<div class="container-fluid">
+    <div class="row">
+        <img class="img-responsive model-img" src="{% static 'img/1.jpg' %}">
+    </div>
+</div>
+<div class="container">
+    <div class="row row-3">
+        <div class="col-md-3">
+            <div class="model-title">
+                人才招聘
+            </div>
+            <div class="model-list">
+                <ul class="list-group">
+                    <li class="list-group-item" id="culture">
+                        <a href="{% url 'educationAPP:culture' %}">欢迎咨询</a>
+                    </li>
+                    <li class="list-group-item" id="history">
+                        <a href="{% url 'educationAPP:history' %}">人才招聘</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <p>欢迎咨询</p>
+            <hr>
+            <div class="col-md-6">
+                <div class="contact.left">
+                    <h1>
+                        <strong>博物馆</strong>
+                        <span>Welecome To Museum</span>
+                    </h1>
+                    <ul>
+                        <li><span>咨询电话：</span>0121-4844544</li>
+                        <li><span>博物馆传真：</span>0814-751125784</li>
+                        <li><span>地址：</span>**省**市**街道**号</li>
+                        <li><span>邮编：</span>15457815481@163.com</li>
+                        <li><span>网址：</span>
+                            <a href="https://www.dadiadwias.com">https://www.dadiadwias.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--引用百度地图-->
+            <div class="col-md-6">
+                <style type="text/css">
+                    html,
+                    body {
+                        margin: 0;
+                        padding: 0;
+                    }
+
+                    .iw_poi_title {
+                        color: #CC5522;
+                        font-size: 14px;
+                        font-weight: bold;
+                        overflow: hidden;
+                        padding-right: 13px;
+                        white-space: nowrap
+                    }
+
+                    .iw_poi_content {
+                        font: 12px arial, sans-serif;
+                        overflow: visible;
+                        padding-top: 4px;
+                        white-space: -moz-pre-wrap;
+                        word-wrap: break-word
+                    }
+                </style>
+                <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
+
+                <!--百度地图容器-->
+                <div style="width:500px;height:400px;border:#ccc solid 1px;" id="dituContent"></div>
+                <script type="text/javascript">
+                    //创建和初始化地图函数：
+                    function initMap() {
+                        createMap(); //创建地图
+                        setMapEvent(); //设置地图事件
+                        addMapControl(); //向地图添加控件
+                    }
+
+                    //创建地图函数：
+                    function createMap() {
+                        var map = new BMap.Map("dituContent"); //在百度地图容器中创建一个地图
+                        var point = new BMap.Point(116.403414, 39.924091); //定义一个中心点坐标
+                        map.centerAndZoom(point, 17); //设定地图的中心点和坐标并将地图显示在地图容器中
+                        window.map = map; //将map变量存储在全局
+                    }
+
+                    //地图事件设置函数：
+                    function setMapEvent() {
+                        map.enableDragging(); //启用地图拖拽事件，默认启用(可不写)
+                        map.enableScrollWheelZoom(); //启用地图滚轮放大缩小
+                        map.enableDoubleClickZoom(); //启用鼠标双击放大，默认启用(可不写)
+                        map.enableKeyboard(); //启用键盘上下左右键移动地图
+                    }
+
+                    //地图控件添加函数：
+                    function addMapControl() {
+                        //向地图中添加缩放控件
+                        var ctrl_nav = new BMap.NavigationControl({
+                            anchor: BMAP_ANCHOR_TOP_LEFT,
+                            type: BMAP_NAVIGATION_CONTROL_LARGE
+                        });
+                        map.addControl(ctrl_nav);
+                        //向地图中添加缩略图控件
+                        var ctrl_ove = new BMap.OverviewMapControl({
+                            anchor: BMAP_ANCHOR_BOTTOM_RIGHT,
+                            isOpen: 1
+                        });
+                        map.addControl(ctrl_ove);
+                        //向地图中添加比例尺控件
+                        var ctrl_sca = new BMap.ScaleControl({
+                            anchor: BMAP_ANCHOR_BOTTOM_LEFT
+                        });
+                        map.addControl(ctrl_sca);
+                    }
+
+
+                    initMap(); //创建和初始化地图
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}
+<script type="text/JavaScript">
+    $('#{{sub_menu}}').addClass("active");
+</script>

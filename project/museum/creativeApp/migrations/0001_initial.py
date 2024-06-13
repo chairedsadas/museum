@@ -34,7 +34,7 @@ class Migration(migrations.Migration):
             name='ProductImg',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('photo', models.ImageField(blank=True, upload_to='Product/', verbose_name='产品图片')),
+                ('photo', models.ImageField(blank=True, upload_to='../media/', verbose_name='产品图片')),
                 ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='productImgs', to='creativeApp.Product', verbose_name='产品')),
             ],
             options={

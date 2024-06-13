@@ -37,7 +37,7 @@ class ProductImg(models.Model):
                                 related_name='productImgs',
                                 verbose_name='产品',
                                 on_delete=models.CASCADE)
-    photo = models.ImageField(upload_to='Product/',
+    photo = models.ImageField(upload_to='../media/',
                               blank=True,
                               verbose_name='产品图片')
 
