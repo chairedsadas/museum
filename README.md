@@ -11,4 +11,4 @@ python-web用Django搭建博物馆
 ##### pip install django-widget-tweaks
 ##### pip install django-simpleui
 ##### pip install docxtpl
-### 后台的账户为root密码为123，文创页面目前没有数据，打开会报错，需要在后台添加数据
+### 后台的账户为root密码为123
