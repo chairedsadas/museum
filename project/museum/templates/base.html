@@ -62,12 +62,15 @@
 
 
                 <li class="dropdown nav-top">
-                    <a href="#" class="dropdown-toggle on"
-                       data-toggle="dropdown">藏品</a>
+                    <a href="#" class="dropdown-toggle on" data-toggle="dropdown">
+                        藏品中心</a>
                     <ul class="dropdown-menu">
-                        <li><a href="{% url 'collectionAPP:penmanship' %}">书法</a></li>
-                        <li><a href="{% url 'collectionAPP:Bronze_ware' %}">青铜器</a></li>
-                        <li><a href="{% url 'collectionAPP:porcelain' %}">瓷器</a></li>
+                        <li><a href="{% url 'productsApp:products' 'robot' %}">
+                            瓷器</a></li>
+                        <li><a href="{% url 'productsApp:products' 'monitor' %}">
+                            青铜器</a></li>
+                        <li><a href="{% url 'productsApp:products' 'face' %}">
+                            书法</a></li>
                     </ul>
                 </li>
 
@@ -109,9 +112,12 @@
         <div class="col-md-2">
             <dl>
                 <dt>藏品</dt>
-                <dd><a href="{% url 'collectionAPP:penmanship' %}">书法</a></dd>
-                <dd><a href="{% url 'collectionAPP:Bronze_ware' %}">青铜器</a></dd>
-                <dd><a href="{% url 'collectionAPP:porcelain' %}">瓷器</a></dd>
+                <dd><a href="{% url 'productsApp:products' 'robot' %}">
+                    瓷器</a></dd>
+                <dd><a href="{% url 'productsApp:products' 'monitor' %}">
+                    青铜器</a></dd>
+                <dd><a href="{% url 'productsApp:products' 'face' %}">
+                    书法</a></dd>
             </dl>
         </div>
 
