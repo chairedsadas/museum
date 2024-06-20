@@ -11,4 +11,5 @@ python-web用Django搭建博物馆
 ##### pip install django-widget-tweaks
 ##### pip install django-simpleui
 ##### pip install docxtpl
+##### pip install whoosh django-haystack jieba
 ### 后台的账户为root密码为123
