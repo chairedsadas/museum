@@ -35,13 +35,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'homeApp',
+    'homeApp',  # 添加"首页"应用
     'collectionApp',
     'creativeApp',
     'educationApp',
     'aboutApp',
     'widget_tweaks',
     'simpleui',
+    'DjangoUeditor',  # 添加富文本应用
+    'newsApp',  # 添加"新闻动态"应用
+    'haystack',  # 添加搜索应用
+
 ]
 
 MIDDLEWARE = [
@@ -108,9 +112,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'zh-Hans' # 设置语音为中文
+LANGUAGE_CODE = 'zh-Hans'  # 设置语音为中文
 
-TIME_ZONE = 'Asia/Shanghai' # 设置中国时区
+TIME_ZONE = 'Asia/Shanghai'  # 设置中国时区
 
 USE_I18N = True
 
@@ -127,17 +131,26 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
 
-#王普慧-后台数据模型-4.17
+# 王普慧-后台数据模型-4.17
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR,'/media/')
-#王普慧-end
+MEDIA_ROOT = os.path.join(BASE_DIR, '/media/')
+# 王普慧-end
 
 
-
-#yyt#
+# yyt#
 
 EMAIL_HOST = 'smtp.qq.com'
 EMAIL_PORT = 25
 EMAIL_HOST_USER = '1209053533@qq.com'
 EMAIL_HOST_PASSWORD = 'qtkejxlkyarnghhh'
-EMAIL_USE_TLS = True
+EMAIL_USE_TS = True
+
+# 新闻搜索配置django-haystack
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'newsApp.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
+    },
+}
+HAYSTACK_SEARCH_RESULTS_PER_PAGE = 10
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
