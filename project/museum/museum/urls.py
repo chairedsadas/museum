@@ -24,7 +24,6 @@ urlpatterns = [
     path('educationApp/', include('educationApp.urls')),
     path('creativeApp/', include('creativeApp.urls')),
     path('collectionApp/', include('collectionApp.urls')),
-    path('aboutApp/', include('aboutApp.urls')),
     path('ueditor/', include('DjangoUeditor.urls')),
     path('newsApp/', include('newsApp.urls')),  # 新闻动态
     path('search/', include('haystack.urls')),  # 搜索应用

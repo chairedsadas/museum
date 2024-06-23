@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'collectionApp',
     'creativeApp',
     'educationApp',
-    'aboutApp',
     'widget_tweaks',
     'simpleui',
     'DjangoUeditor',  # 添加富文本应用

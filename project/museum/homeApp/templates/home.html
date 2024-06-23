@@ -4,5 +4,370 @@
     首页
 {% endblock %}
 {% block content %}
-    <p style="height: 500px" >这是页面的主题</p>
+    <link href="{% static 'css/home.css' %}" rel="stylesheet">
+    <script src="{% static 'js/jqthumb.min.js' %}"></script>
+    <div id="ad" class="carousel slide" data-ride="carousel" data-interval="5000">
+        <ol class="carousel-indicators">
+            <li data-target="#ad" data-to="0" class="active"></li>
+            <li data-target="#ad" data-to="1"></li>
+            <li data-target="#ad" data-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="{% static 'img/banner1.jpg' %}" alt="广告横幅1">
+            </div>
+            <div class="item">
+                <img src="{% static 'img/banner2.jpg' %}" alt="广告横幅2">
+            </div>
+            <div class="item">
+                <img src="{% static 'img/banner3.jpg' %}" alt="广告横幅3">
+            </div>
+        </div>
+        <a class="left carousel-control" href="#ad" data-slide="prev"><span
+                class="glyphicon glyphicon-chevron-left"></span></a>
+        <a class="right carousel-control" href="#ad" data-slide="next"><span
+                class="glyphicon glyphicon-chevron-right"></span></a>
+    </div>
+
+    <div class="container">
+        <div class="row row-3">
+            <div class="col-md-6">
+                <!-- 联系我们 -->
+                <span class="part1">
+        	<a href="{% url 'educationAPP:history' %}">联系我们</a>
+   	   	</span>
+                <span class="part1 en">
+        		&nbsp;&nbsp;/ Contact us
+      		</span>
+                <div class="line1">
+                    <div class="line2 theme"></div>
+                </div>
+                <div>
+                    <ul class="list-unstyled procurement-li">
+                        <li>业务质询一：111-XXXXXX</li>
+                        <li>业务质询二：222-XXXXXX</li>
+                        <li>咨询电话：0111-XXXXXX</li>
+                        <li>企业传真：0222-XXXXXX</li>
+                        <li>地址：某某某新区某某大道1号</li>
+                        <li>邮编：XXXXXX</li>
+                        <li>
+                            网址：<a href="http://python3web.com">http://python3web.com</a>
+                        </li>
+                    </ul>
+                    <div class="platform"><a href="{% url 'educationAPP:culture' %}">详情</a></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <!--新闻动态-->
+                <span class="part1">
+                    <a href="#">新闻动态</a>
+                </span>
+                <span class="part1 en">
+                    &nbsp;&nbsp;/ News
+                </span>
+                <a class="btn btn-default btn-xs more-btn" href="{% url 'newsApp:news' 'company' %}">
+                    +&nbsp;更多
+                </a>
+                <div class="line1">
+                    <div class="line2 theme"></div>
+                </div>
+                <div class="col-md-5">
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators nav-point">
+                            {% for post in postList %}
+                                <li data-target="#myCarousel" data-slide-to="{{ forloop.counter0 }}"
+                                        {% if forloop.first %}
+                                    class="active"{% endif %}></li>
+                            {% endfor %}
+                        </ol>
+                        <!-- 轮播（Carousel）项目 -->
+                        <div class="carousel-inner" style="margin-top:15px;">
+                            {% for post in postList %}
+                                <div {% if forloop.first %} class="item active" {% else %}
+                                                            class="item" {% endif %}style="background-size:cover;">
+                                    <a href="{% url 'newsApp:newDetail' post.id %}"><img src="{{ post.photo.url }}"
+                                                                                         class="img-responsive"
+                                                                                         onload="DrawImage(this)"></a>
+                                    <div class="carousel-caption nav-title">{{ post.title }}</div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <ul class="list-unstyled list-new">
+                        {% for mynew in newList %}
+                            <li>
+                                <a href="{% url 'newsApp:newDetail' mynew.id %}">{{ mynew.title|truncatechars:"15" }}</a>
+                                <span>【{{ mynew.publishDate|date:"Y-m-d" }}】</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="row row-3">
+                <!-- 产品中心 -->
+                <div class="col-md-12 col-pro">
+
+          <span class="part1">
+            <a href="{% url 'productsApp:products' 'robot' %}">产品中心</a>
+          </span>
+                    <span class="part1 en">
+            &nbsp;&nbsp;/ collection
+          </span>
+                    <a class="btn btn-default btn-xs more-btn" href="{% url 'productsApp:products' 'robot' %}">
+                        +&nbsp;更多
+                    </a>
+                    <div class="line1" style="margin-bottom:5px;">
+                        <div class="line2 theme"></div>
+                    </div>
+                    <div class="col-md-12 col-pro">
+                        <div id="Carousel" class="carousel slide" style="margin-bottom:30px">
+                            <ol class="carousel-indicators" style="display:none;">
+                                <li data-target="#Carousel" data-slide-to="0" class="active"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <div class="row">
+                                        {% for product in productList %}
+                                            <div class="col-md-3 pro-images">
+                                                <a href="{% url 'productsApp:productDetail' product.id %}"
+                                                   class="thumbnail">
+                                                    {% for img in product.productImgs.all %}
+                                                        {% if forloop.first %}
+                                                            <img src="{{ img.photo.url }}" alt="产品图片"
+                                                                 class="img-responsive"
+                                                                 onload="DrawImage(this)">
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </a>
+                                                <div class="carousel-caption nav-title">{{ product.title }}</div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row row-3">
+                <!-- 产品中心 -->
+                <div class="col-md-12 col-pro">
+
+      <span class="part1">
+        <a href="{% url 'creativeApp:products' 'stationery' %}">文创</a>
+      </span>
+                    <span class="part1 en">
+        &nbsp;&nbsp;/ creative
+      </span>
+                    <a class="btn btn-default btn-xs more-btn" href="{% url 'creativeApp:products' 'stationery' %}">
+                        +&nbsp;更多
+                    </a>
+                    <div class="line1" style="margin-bottom:5px;">
+                        <div class="line2 theme"></div>
+                    </div>
+                    <div class="col-md-12 col-pro">
+                        <div id="Carousel" class="carousel slide" style="margin-bottom:30px">
+                            <ol class="carousel-indicators" style="display:none;">
+                                <li data-target="#Carousel" data-slide-to="0" class="active"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <div class="row">
+                                        {% for product in productList %}
+                                            <div class="col-md-3 pro-images">
+                                                <a href="{% url 'creativeApp:productDetail' product.id %}"
+                                                   class="thumbnail">
+                                                    {% for img in product.productImgs.all %}
+                                                        {% if forloop.first %}
+                                                            <img src="{{ img.photo.url }}" alt="文创图片"
+                                                                 class="img-responsive"
+                                                                 onload="DrawImage(this)">
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </a>
+                                                <div class="carousel-caption nav-title">{{ product.title }}</div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row row-3">
+                <!--友情链接-->
+                <div class="col-md-12">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+
+    {#    <div class="col-md-4">#}
+    {#        <!--新闻动态-->#}
+    {#        <span class="part1">#}
+    {#                    <a href="#">新闻动态</a>#}
+    {#                </span>#}
+    {#        <span class="part1 en">#}
+    {#                    &nbsp;&nbsp;/ News#}
+    {#                </span>#}
+    {#        <a class="btn btn-default btn-xs more-btn" href="{% url 'newsApp:news' 'company' %}">#}
+    {#            +&nbsp;更多#}
+    {#        </a>#}
+    {#        <div class="line1">#}
+    {#            <div class="line2 theme"></div>#}
+    {#        </div>#}
+    {#        <div class="col-md-5">#}
+    {#            <div id="myCarousel" class="carousel slide" data-ride="carousel">#}
+    {#                <ol class="carousel-indicators nav-point">#}
+    {#                    {% for post in postList %}#}
+    {#                        <li data-target="#myCarousel" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}#}
+    {#                            class="active"{% endif %}></li>#}
+    {#                    {% endfor %}#}
+    {#                </ol>#}
+    {#                <!-- 轮播（Carousel）项目 -->#}
+    {#                <div class="carousel-inner" style="margin-top:15px;">#}
+    {#                    {% for post in postList %}#}
+    {#                        <div {% if forloop.first %} class="item active" {% else %}#}
+    {#                                                    class="item" {% endif %}style="background-size:cover;">#}
+    {#                            <a href="{% url 'newsApp:newDetail' post.id %}"><img src="{{ post.photo.url }}"#}
+    {#                                                                                 class="img-responsive"#}
+    {#                                                                                 onload="DrawImage(this)"></a>#}
+    {#                            <div class="carousel-caption nav-title">{{ post.title }}</div>#}
+    {#                        </div>#}
+    {#                    {% endfor %}#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#        <div class="col-md-7">#}
+    {#            <ul class="list-unstyled list-new">#}
+    {#                {% for mynew in newList %}#}
+    {#                    <li>#}
+    {#                        <a href="{% url 'newsApp:newDetail' mynew.id %}">{{ mynew.title|truncatechars:"15" }}</a>#}
+    {#                        <span>【{{ mynew.publishDate|date:"Y-m-d" }}】</span>#}
+    {#                    </li>#}
+    {#                {% endfor %}#}
+    {#            </ul>#}
+    {#        </div>#}
+    {#    </div>#}
+    {##}
+    {##}
+    {#    <div class="row row-3">#}
+    {#        <!-- 产品中心 -->#}
+    {#        <div class="col-md-12 col-pro">#}
+    {##}
+    {#          <span class="part1">#}
+    {#            <a href="{% url 'productsApp:products' 'robot' %}">产品中心</a>#}
+    {#          </span>#}
+    {#            <span class="part1 en">#}
+    {#            &nbsp;&nbsp;/ Products#}
+    {#          </span>#}
+    {#            <a class="btn btn-default btn-xs more-btn" href="{% url 'productsApp:products' 'robot' %}">#}
+    {#                +&nbsp;更多#}
+    {#            </a>#}
+    {#            <div class="line1" style="margin-bottom:5px;">#}
+    {#                <div class="line2 theme"></div>#}
+    {#            </div>#}
+    {#            <div class="col-md-12 col-pro">#}
+    {#                <div id="Carousel" class="carousel slide" style="margin-bottom:30px">#}
+    {#                    <ol class="carousel-indicators" style="display:none;">#}
+    {#                        <li data-target="#Carousel" data-slide-to="0" class="active"></li>#}
+    {#                    </ol>#}
+    {#                    <div class="carousel-inner">#}
+    {#                        <div class="item active">#}
+    {#                            <div class="row">#}
+    {#                                {% for product in productList %}#}
+    {#                                    <div class="col-md-3 pro-images">#}
+    {#                                        <a href="{% url 'productsApp:productDetail' product.id %}" class="thumbnail">#}
+    {#                                            {% for img in product.productImgs.all %}#}
+    {#                                                {% if forloop.first %}#}
+    {#                                                    <img src="{{ img.photo.url }}" alt="产品图片" class="img-responsive"#}
+    {#                                                         onload="DrawImage(this)">#}
+    {#                                                {% endif %}#}
+    {#                                            {% endfor %}#}
+    {#                                        </a>#}
+    {#                                        <div class="carousel-caption nav-title">{{ product.title }}</div>#}
+    {#                                    </div>#}
+    {#                                {% endfor %}#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </div>#}
+    {##}
+    {#    <div class="row row-3">#}
+    {#        <!-- 产品中心 -->#}
+    {#        <div class="col-md-12 col-pro">#}
+    {##}
+    {#      <span class="part1">#}
+    {#        <a href="{% url 'creativeApp:products' 'stationery' %}">产品中心</a>#}
+    {#      </span>#}
+    {#            <span class="part1 en">#}
+    {#        &nbsp;&nbsp;/ Products#}
+    {#      </span>#}
+    {#            <a class="btn btn-default btn-xs more-btn" href="{% url 'creativeApp:products' 'stationery' %}">#}
+    {#                +&nbsp;更多#}
+    {#            </a>#}
+    {#            <div class="line1" style="margin-bottom:5px;">#}
+    {#                <div class="line2 theme"></div>#}
+    {#            </div>#}
+    {#            <div class="col-md-12 col-pro">#}
+    {#                <div id="Carousel" class="carousel slide" style="margin-bottom:30px">#}
+    {#                    <ol class="carousel-indicators" style="display:none;">#}
+    {#                        <li data-target="#Carousel" data-slide-to="0" class="active"></li>#}
+    {#                    </ol>#}
+    {#                    <div class="carousel-inner">#}
+    {#                        <div class="item active">#}
+    {#                            <div class="row">#}
+    {#                                {% for product in productList %}#}
+    {#                                    <div class="col-md-3 pro-images">#}
+    {#                                        <a href="{% url 'creativeApp:productDetail' product.id %}" class="thumbnail">#}
+    {#                                            {% for img in product.productImgs.all %}#}
+    {#                                                {% if forloop.first %}#}
+    {#                                                    <img src="{{ img.photo.url }}" alt="产品图片" class="img-responsive"#}
+    {#                                                         onload="DrawImage(this)">#}
+    {#                                                {% endif %}#}
+    {#                                            {% endfor %}#}
+    {#                                        </a>#}
+    {#                                        <div class="carousel-caption nav-title">{{ product.title }}</div>#}
+    {#                                    </div>#}
+    {#                                {% endfor %}#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {##}
+    {#        </div>#}
+    {#    </div>#}
+    {##}
+    {#    <div class="row row-3">#}
+    {#        <!--友情链接-->#}
+    {#        <div class="col-md-12">#}
+    {#        </div>#}
+    {#    </div>#}
+    {#    </div>#}
+
+
+    <script>
+        //处理缩略图
+        function DrawImage(hotimg) {
+            $(hotimg).jqthumb({
+                width: '100%',
+                height: '250px',
+                zoom: '1',
+                method: 'auto'
+            });
+        }
+    </script>
 {% endblock %}

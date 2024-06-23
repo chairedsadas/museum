@@ -94,14 +94,14 @@
                 </li>
 
 
-                <li class="dropdown nav-top">
-                    <a href="#" class="dropdown-toggle on"
-                       data-toggle="dropdown">关于</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{% url 'aboutAPP:introduce' %}">总体介绍</a></li>
-                        <li><a href="{% url 'aboutAPP:leader' %}">领导</a></li>
-                    </ul>
-                </li>
+{#                <li class="dropdown nav-top">#}
+{#                    <a href="#" class="dropdown-toggle on"#}
+{#                       data-toggle="dropdown">关于</a>#}
+{#                    <ul class="dropdown-menu">#}
+{#                        <li><a href="{% url 'aboutAPP:introduce' %}">总体介绍</a></li>#}
+{#                        <li><a href="{% url 'aboutAPP:leader' %}">领导</a></li>#}
+{#                    </ul>#}
+{#                </li>#}
 
 
             </ul>
@@ -140,13 +140,13 @@
             </dl>
         </div>
 
-        <div class="col-md-2">
-            <dl>
-                <dt>关于</dt>
-                <dd><a href="{% url 'aboutAPP:introduce' %}">总体介绍</a></dd>
-                <dd><a href="{% url 'aboutAPP:leader' %}">领导</a></dd>
-            </dl>
-        </div>
+{#        <div class="col-md-2">#}
+{#            <dl>#}
+{#                <dt>关于</dt>#}
+{#                <dd><a href="{% url 'aboutAPP:introduce' %}">总体介绍</a></dd>#}
+{#                <dd><a href="{% url 'aboutAPP:leader' %}">领导</a></dd>#}
+{#            </dl>#}
+{#        </div>#}
         <div class="col-md-4" id="wx">
             <p>扫描二维码，关注我们</p>
             <img class="qr img" src="{% static 'img/qr.png' %}" alt="wx">
